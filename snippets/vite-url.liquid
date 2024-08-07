@@ -1,0 +1,13 @@
+{% capture vite_element %}{% render 'vite-tag' with asset %}{% endcapture %}
+
+{% assign url = vite_element
+  | remove: '<script src="'
+  | remove: '" type="module"></script>'
+  | remove: '<link href="'
+  | remove: '" rel="stylesheet" type="text/css" media="all">'
+  | split: ' '
+  | last
+  | remove: ' '
+%}
+{{- url -}}
+
